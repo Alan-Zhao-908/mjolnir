@@ -21,8 +21,13 @@
 }
 
 .fb-video {
-  padding: 30px;
   /* z-index: 0; */
-  left: 50%;
-  transform: translate(-50%, 0%);
+  /* text-align: center; */
+  /* margin: 0 auto; */
+  /* left: 50%; */
+}
+
+.fb-div {
+  margin: 0 auto;
+  text-align: center;
 }

@@ -19,10 +19,10 @@ function Question(props) {
   };
 
   return <div>
-    <p>{props.data.text}</p>
+      <p>{props.data.text}</p>
+
     {
       props.data.option_set.map((choice, i) => {
-        // console.log(choice.id)
         return <div style={{ marginBottom: 10 }} key={i}>
           <Button onClick={handleClick.bind(this,choice.id)}>{choice.text}</Button>
         </div>;

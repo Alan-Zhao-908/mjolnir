@@ -60,25 +60,29 @@ function MainApp() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ color: 'blue' }}> Controlife</h1>
+        <h1 style={{ color: 'blue' }}> CTRLife</h1>
         <h3>
-          A social experiment to control Max Greenwald’s life <br /> <br />{""}
+          A social experiment to control Max's life <br /> <br />{""}
           <br />{''}
         </h3>
         <h4 style={{ color: "red", textAlign: "left" }}>
           Rules of Engagement:
         </h4>
         <h6 align="eft">
-          (1) At 1pm PST on Sunday Nov 3 go to the this livestream link: <br /> (2)
+          (1) The event starts at 1pm PST on Sunday Nov 3 <br /> (2)
           The director will post questions periodically on what Max should do.
           You have 20 seconds to vote. <br /> (3) Are you an Agent of Chaos? Go
           find Max in SF and change the course of livestream
           <br /> (4) Be kind... or don’t be
         </h6>
-        <Timer time={data.time} seconds={20}/>
-        {screen === 'question' ? <div>
-          <h4>Question</h4> 
-          <Question uid={uid} data={data} showresults={onOptionChosen}  />
+        <div style={{display:"in-line-block"}}>
+          <h4 style={{float: "left"}}>Time Left </h4>
+          <Timer time={data.time} seconds={20}/>
+        </div>
+        {screen === 'question' ? <div style={{display:"in-line-block"}}>
+          <div style={{float: "left"}}>
+            <Question uid={uid} data={data} showresults={onOptionChosen}  />
+          </div>
         </div>
           : <Result data={data} />
         }

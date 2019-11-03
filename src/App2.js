@@ -20,7 +20,7 @@ class App extends Component {
     this.setState({ loading: true });
 
     // get all the comments
-    fetch("http://localhost:3000")
+    fetch("https://poll-asgard.herokuapp.com/v1/comment")
       .then(res => res.json())
       .then(res => {
         this.setState({

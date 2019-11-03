@@ -53,7 +53,7 @@ export default class CommentForm extends Component {
     // persist the comments on server
     let { comment } = this.state;
     console.log(comment)
-    fetch("http://localhost:3000", {
+    fetch("https://poll-asgard.herokuapp.com/v1/comment", {
       method: "post",
       body: JSON.stringify(comment)
     })
