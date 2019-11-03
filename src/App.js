@@ -35,7 +35,6 @@ function App() {
   if (!data) return <p>Loading...</p>;
   console.log(data);
   console.log(error);
-  console.log('usee state: ', useState)
   let timeDiff = moment().diff(moment(data.time));
 
   return (
@@ -50,15 +49,17 @@ function App() {
           Rules of Engagement:
         </h4>
         <h6 align="eft">
-          (1) At 1pm on Sunday Nov 3 go to the this livestream link: <br /> (2)
+          (1) At 1pm PST on Sunday Nov 3 go to the this livestream link: <br /> (2)
           The director will post questions periodically on what Max should do.
           You have 20 seconds to vote. <br /> (3) Are you an Agent of Chaos? Go
           find Max in SF and change the course of livestream
           <br /> (4) Be kind... or don’t be
         </h6>
         <Timer seconds={20}/>
-        {screen === 'question' ?
+        {screen === 'question' ? <div>
+          <h3>Question</h3> 
           <Question data={data} showresults={() => setScreen('result')}  />
+        </div>
           : <Result data={data} />
         }
       </header>
