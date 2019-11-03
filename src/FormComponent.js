@@ -10,82 +10,91 @@ export default class CommentForm extends Component {
 			loading: false,
 			error: "",
 
-			comment: {
-				name: "",
-				message: ""
-			},
+			// comment: {
+			// 	name: "",
+			// 	message: ""
+			// },
+			name: '',
+			message: ''
 		};
+
+		// this.nameRef = React.createRef();
+		// this.commentRef = React.createRef();
 
 		// bind context to methods
 		// this.handleFieldChange = this.handleFieldChange.bind(this);
-		this.onSubmit = this.onSubmit.bind(this);
+		// this.onSubmit = this.onSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
-
 
 	/**
 	 * Handle form input field changes & update the state
 	 */
-	handleFieldChange = event => {
-		const {value, name} = event.target;
+	// handleFieldChange = event => {
+	// 	const {value, name} = event.target;
+	//
+	// 	this.setState({
+	// 		...this.state,
+	// 		comment: {
+	// 			...this.state.comment,
+	// 			[name]: value
+	// 		}
+	// 	});
+	// };
 
-		this.setState({
-			...this.state,
-			comment: {
-				...this.state.comment,
-				[name]: value
-			}
-		});
-	};
+	handleChange(event) {
+		this.setState({[event.target.name]: event.target.value});
+	}
 
 	/**
 	 * Form submit handler
 	 */
-	onSubmit(e) {
-		// prevent default form submission
-		e.preventDefault();
+	// onSubmit(e) {
+	// 	// prevent default form submission
+	// 	e.preventDefault();
+	//
+	// 	if (!this.isFormValid()) {
+	// 		this.setState({error: "All fields are required."});
+	// 		return;
+	// 	}
+	//
+	// 	// loading status and clear error
+	// 	this.setState({error: "", loading: true});
+	//
+	// 	// persist the comments on server
+	// 	let {comment} = this.state;
+	// 	console.log(comment)
+	// 	fetch("http://localhost:3000", {
+	// 		method: "post",
+	// 		body: JSON.stringify(comment)
+	// 	})
+	// 		.then(res => res.json())
+	// 		.then(res => {
+	// 			if (res.error) {
+	// 				this.setState({loading: false, error: res.error});
+	// 			} else {
+	// 				// add time return from api and push comment to parent state
+	// 				comment.time = res.time;
+	// 				this.props.addComment(comment);
+	//
+	// 				// clear the message box
+	// 				this.setState({
+	// 					loading: false,
+	// 					comment: {...comment, message: ""}
+	// 				});
+	// 			}
+	// 		})
+	// 		.catch(err => {
+	// 			this.setState({
+	// 				error: "Something went wrong while submitting form.",
+	// 				loading: false
+	// 			});
+	// 		});
+	// }
 
-		if (!this.isFormValid()) {
-			this.setState({error: "All fields are required."});
-			return;
-		}
-
-		// loading status and clear error
-		this.setState({error: "", loading: true});
-
-		// persist the comments on server
-		let {comment} = this.state;
-		console.log(comment)
-		fetch("http://localhost:3000", {
-			method: "post",
-			body: JSON.stringify(comment)
-		})
-			.then(res => res.json())
-			.then(res => {
-				if (res.error) {
-					this.setState({loading: false, error: res.error});
-				} else {
-					// add time return from api and push comment to parent state
-					comment.time = res.time;
-					this.props.addComment(comment);
-
-					// clear the message box
-					this.setState({
-						loading: false,
-						comment: {...comment, message: ""}
-					});
-				}
-			})
-			.catch(err => {
-				this.setState({
-					error: "Something went wrong while submitting form.",
-					loading: false
-				});
-			});
-	}
-
-	isFormValid() {
-		return this.state.comment.name !== "" && this.state.comment.message !== "";
-	}
+	// isFormValid() {
+	// 	return this.state.comment.name !== "" && this.state.comment.message !== "";
+	// }
 
 	renderError() {
 		return this.state.error ? (
@@ -102,21 +111,25 @@ export default class CommentForm extends Component {
 						<form
 							onSubmit={async e => {
 								e.preventDefault();
-								const name = this.state.comment.name;
-								const comment = this.state.comment.message;
+								const name = this.state.name;
+								const comment = this.state.message;
+								let timestamp = Date.now() * -1;
 								await runMutation({
 									name,
 									comment,
-									created_at: firebase.database.ServerValue.TIMESTAMP,
-									updated_at: firebase.database.ServerValue.TIMESTAMP
+									created_at: timestamp,
+									updated_at: timestamp
 								});
+								// this.nameRef.value = '';
+								// this.commentRef.value = '';
 							}}
 						>
 							{/*<form method="post" onSubmit={this.onSubmit}>*/}
 							<div className="form-group">
 								<input
-									// onChange={this.handleFieldChange}
-									value={this.state.comment.name}
+									onKeyUp={this.handleChange}
+									// value={this.state.name}
+									// ref={this.nameRef}
 									className="form-control"
 									placeholder="Your Name"
 									name="name"
@@ -126,8 +139,9 @@ export default class CommentForm extends Component {
 
 							<div className="form-group">
 								<textarea
-									// onChange={this.handleFieldChange}
-									value={this.state.comment.message}
+									onKeyUp={this.handleChange}
+									// value={this.state.message}
+									// ref={this.commentRef}
 									className="form-control"
 									placeholder="😎 Your Comment"
 									name="message"

@@ -8,9 +8,9 @@ export default function CommentList(props) {
 		<div className="commentList">
 			<FirebaseDatabaseNode
 				path="comments/"
-				limitToFirst={100}
+				limitToFirst={5}
 				// orderByKey
-				orderByValue={"created_on"}
+				orderByValue={"created_at"}
 			>
 				{d => {
 					// console.log(d.value ? d.value : 'no value loaded');
@@ -24,9 +24,9 @@ export default function CommentList(props) {
 							{d.value ?
 								Object.keys(d.value).map((keyName, id) => {
 									const currentComment = d.value[keyName];
-									console.log('INSIDE: ', keyName, id, currentComment);
+									console.log('COMMENT: ', keyName, id, currentComment);
 									if (currentComment.name) {
-										return <Comment key={currentComment.name} name={currentComment.name} message={currentComment.comment}/>
+										return <Comment key={keyName} name={currentComment.name} message={currentComment.comment}/>
 									}
 								})
 								:
