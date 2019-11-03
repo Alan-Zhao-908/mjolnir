@@ -69,15 +69,17 @@ function MainApp() {
           Rules of Engagement:
         </h4>
         <h6 align="eft">
-          (1) The event starts at 1pm PST on Sunday Nov 3 <br /> (2)
+          (1) The event starts at 1:05pm PST on Sunday Nov 3 and if the stream goes down go
+          <a href="https://www.facebook.com/ControlLife-109561203819750/ "> here</a> to continue watching!
+           <br /> (2)
           The director will post questions periodically on what Max should do.
-          You have 20 seconds to vote. <br /> (3) Are you an Agent of Chaos? Go
+          You have 40 seconds to vote. <br /> (3) Are you an Agent of Chaos? Go
           find Max in SF and change the course of livestream
           <br /> (4) Be kind... or don’t be
         </h6>
         <div style={{display:"in-line-block"}}>
           <h4 style={{float: "left"}}>Time Left </h4>
-          <Timer time={data.time} seconds={20}/>
+          <Timer time={data.time} seconds={40}/>
         </div>
         {screen === 'question' ? <div style={{display:"in-line-block"}}>
           <div style={{float: "left"}}>
