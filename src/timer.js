@@ -1,8 +1,7 @@
 const React = require('react')
 
-
+let time 
 class Timer extends React.Component {
-
    constructor(props){
        super(props)
        this.timer = 0;
@@ -40,6 +39,7 @@ class Timer extends React.Component {
    }
 
    componentWillMount() {
+       console.log('componentwillmount')
        this.setState({ seconds: this.props.seconds });
    }
 
@@ -67,9 +67,14 @@ class Timer extends React.Component {
    }
 
    render() {
+        if (time !== this.props.time) {
+            this.setState({ seconds: this.props.seconds });
+            clearInterval(this.timer);
+            this.startTimer()
+        }
+        time = this.props.time
        return(
-         <div>
-           {/* <button onClick={this.startTimer}>Start</button> */}
+         <div style={{width: "500px"}}>
            {this.state.time.hours} : {this.state.time.minutes} : {this.state.time.seconds}
          </div>
        );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ApiClient from './APIClient';
-import useSWR from '@zeit/swr';
+import useSWR, { SWRConfig } from '@zeit/swr';
 import { useCookies } from 'react-cookie';
 import Question from './Question';
 import moment from 'moment';
@@ -10,9 +10,17 @@ import Result from './Result';
 import Timer from './timer.js'
 
 const uuidv4 = require('uuid/v4');
-
+let tempTime 
 
 function App() {
+  return (
+    <SWRConfig value={{ refreshInterval: 5000 }}>
+      <MainApp />
+    </SWRConfig>
+  );
+}
+
+function MainApp() {
   const [cookies, setCookie] = useCookies(['uid']);
   const [uid, setUid] = useState(null);
   const [screen, setScreen] = useState('question');
@@ -30,12 +38,24 @@ function App() {
     }
   });
 
-  let onOptionChosen = () => setScreen('result');
+
+  let onOptionChosen = (e) => {
+    setScreen('result')
+  };
 
   if (!data) return <p>Loading...</p>;
-  console.log(data);
-  console.log(error);
+  // console.log(data);
+  // console.log(error);
+
   let timeDiff = moment().diff(moment(data.time));
+
+
+  if (tempTime !== data.time) {
+    setScreen('question')
+  } 
+
+  tempTime = data.time
+
 
   return (
     <div className="App">
@@ -55,10 +75,10 @@ function App() {
           find Max in SF and change the course of livestream
           <br /> (4) Be kind... or don’t be
         </h6>
-        <Timer seconds={20}/>
+        <Timer time={data.time} seconds={20}/>
         {screen === 'question' ? <div>
           <h3>Question</h3> 
-          <Question data={data} showresults={() => setScreen('result')}  />
+          <Question uid={uid} data={data} showresults={onOptionChosen}  />
         </div>
           : <Result data={data} />
         }
