@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ApiClient from './APIClient';
-import useSWR from '@zeit/swr';
+import useSWR, { SWRConfig } from '@zeit/swr';
 import { useCookies } from 'react-cookie';
 import Question from './Question';
 import moment from 'moment';
@@ -11,8 +11,15 @@ import Timer from './timer.js'
 
 const uuidv4 = require('uuid/v4');
 
-
 function App() {
+  return (
+    <SWRConfig value={{ refreshInterval: 5000 }}>
+      <MainApp />
+    </SWRConfig>
+  );
+}
+
+function MainApp() {
   const [cookies, setCookie] = useCookies(['uid']);
   const [uid, setUid] = useState(null);
   const [screen, setScreen] = useState('question');
@@ -56,9 +63,9 @@ function App() {
           find Max in SF and change the course of livestream
           <br /> (4) Be kind... or don’t be
         </h6>
-        <Timer seconds={20}/>
+        <Timer seconds={20} />
         {screen === 'question' ?
-          <Question data={data} showresults={() => setScreen('result')}  />
+          <Question data={data} showresults={() => setScreen('result')} />
           : <Result data={data} />
         }
       </header>
