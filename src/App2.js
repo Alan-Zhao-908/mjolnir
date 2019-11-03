@@ -45,7 +45,7 @@ class App extends Component {
 
     const loadingSpin = this.state.loading ? "App-logo Spin" : "App-logo";
     return (
-      <div className="App container bg-light shadow">
+      <div className="App container">
 
         <div className="row">
           <div className="col-4  pt-3 border-right">

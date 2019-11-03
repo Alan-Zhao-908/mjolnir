@@ -77,7 +77,7 @@ function MainApp() {
         </h6>
         <Timer time={data.time} seconds={20}/>
         {screen === 'question' ? <div>
-          <h3>Question</h3> 
+          <h4>Question</h4> 
           <Question uid={uid} data={data} showresults={onOptionChosen}  />
         </div>
           : <Result data={data} />
