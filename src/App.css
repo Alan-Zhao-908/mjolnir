@@ -31,3 +31,22 @@
   margin: 0 auto;
   text-align: center;
 }
+
+
+.header-section {
+  margin-bottom: 100px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.header-image {
+  width: 100%;
+  max-width: auto;
+  min-width: auto;
+  margin-right: 0px;
+  margin-left: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}

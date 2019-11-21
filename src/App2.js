@@ -8,7 +8,7 @@ class App extends Component {
 
 
     this.state = {
-      comments: [{name: "asdf", message: "df"},{name: "d", message: "df"}],
+      comments: [{name: "Alan", message: "This is great!"},{name: "Jack", message: "Hilarious..."}],
       loading: false
     };
 

@@ -60,7 +60,8 @@ function MainApp() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ color: 'blue' }}> CTRLife</h1>
+        {/* <h1 style={{ color: 'blue' }}> CTRLife</h1> */}
+        <img width='200px' src={require('./assets/logo.png')} />
         <h3>
           A social experiment to control Max's life <br /> <br />{""}
           <br />{''}
