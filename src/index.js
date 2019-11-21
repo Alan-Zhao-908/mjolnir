@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import App2 from "./App2";
 import * as serviceWorker from "./serviceWorker";
+import TimerComponent from "./timerComponent";
+
+ReactDOM.render(<TimerComponent />, document.getElementById("timer"));
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 

@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -10,7 +10,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
 
 /* WEBFLOW CSS STARTS HERE*/
 
@@ -2281,6 +2281,7 @@ textarea.w-select {
 }
 
 .heading-2 {
+  margin-top: 25px;
   margin-right: -18px;
   margin-left: -18px;
   padding-right: 0px;
@@ -2822,8 +2823,8 @@ textarea.w-select {
 }
 
 .div-block-22 {
-  margin-right: 14px;
-  margin-left: 14px;
+  margin-right: 10px;
+  margin-left: 10px;
   padding-right: 0px;
   padding-left: 0px;
   border-radius: 8px;
