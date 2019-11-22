@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import CommentList from "./CommentList";
 import FormComponent from "./FormComponent";
 
-class App extends Component {
+class CommentComponent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       comments: [
-        { name: "Alan", message: "This is great!", time: "10 am" },
-        { name: "Jack", message: "Hilarious..." }
+        { name: "Alan", message: "This is great!", time: "10:00 am" },
+        { name: "Jack", message: "Hilarious...", time: "9:00 am" }
       ],
       loading: false
     };
@@ -46,22 +46,19 @@ class App extends Component {
   render() {
     const loadingSpin = this.state.loading ? "App-logo Spin" : "App-logo";
     return (
-      <div className="App container">
-        <div className="row">
-          <div className="col-4  pt-3 border-right">
-            <h6>Add a public comment</h6>
-            <FormComponent addComment={this.addComment} />
-          </div>
-          <div className="col-8  pt-3 bg-white">
+      <div>
+        <div class="div-block-20">
+          <div class="text-block-2">
             <CommentList
               loading={this.state.loading}
               comments={this.state.comments}
             />
           </div>
         </div>
+        <FormComponent addComment={this.addComment} />
       </div>
     );
   }
 }
 
-export default App;
+export default CommentComponent;

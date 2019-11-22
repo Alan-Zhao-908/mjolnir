@@ -10,15 +10,13 @@ export default class CommentForm extends Component {
       comment: {
         name: "",
         message: ""
-      },
+      }
     };
 
     // bind context to methods
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
-
 
   /**
    * Handle form input field changes & update the state
@@ -52,7 +50,7 @@ export default class CommentForm extends Component {
 
     // persist the comments on server
     let { comment } = this.state;
-    console.log(comment)
+    console.log(comment);
     fetch("https://poll-asgard.herokuapp.com/v1/comment", {
       method: "post",
       body: JSON.stringify(comment)
@@ -86,46 +84,46 @@ export default class CommentForm extends Component {
   }
 
   renderError() {
-    return this.state.error ? (
-      <div className="alert alert-danger">{this.state.error}</div>
-    ) : null;
+    return this.state.error ? this.state.error : "";
   }
 
   render() {
     return (
-      <React.Fragment>
+      <div>
         <form method="post" onSubmit={this.onSubmit}>
-          <div className="form-group">
+          <div className="div-block-22">
             <input
+              style={{ width: "100%" }}
+              className="text-block"
               onChange={this.handleFieldChange}
               value={this.state.comment.name}
-              className="form-control"
               placeholder="Your Name"
               name="name"
               type="text"
             />
           </div>
 
-          <div className="form-group">
+          <div className="div-block-6">
             <textarea
+              style={{ width: "100%" }}
+              className="text-block-3"
               onChange={this.handleFieldChange}
               value={this.state.comment.message}
-              className="form-control"
-              placeholder="😎 Your Comment"
+              placeholder="Send a message"
               name="message"
               rows="5"
             />
           </div>
-
-          {this.renderError()}
-
-          <div className="form-group">
-            <button disabled={this.state.loading} className="btn btn-primary">
-              Comment ➤
-            </button>
+          <div style={{ padding: "0px 12px" }}>{this.renderError()}</div>
+          <div class="div-block-13">
+            <a href="#">
+              <button disabled={this.state.loading} class="button-4 w-button">
+                Send
+              </button>
+            </a>
           </div>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }

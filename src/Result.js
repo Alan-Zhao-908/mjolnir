@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Button } from "shards-react";
-
 
 function Results(props) {
   let max_votes = 0;
@@ -13,19 +12,21 @@ function Results(props) {
     }
   }
 
-  return <div>
-    <p style={{ color: '#8196ff' }}>(waiting for next question...)</p>
-    <p>{props.data.text}</p>
-    {
-      props.data.option_set.map((choice, i) => {
-        return <div style={{ marginBottom: 10, color: chosen === i ? '#10bf2d' : 'black' }} key={i}>
-          <div style={{ display: 'inline' }}>{choice.text} </div>
-          <div style={{ display: 'inline' }}>{choice.votes}</div>
-        </div>;
-      })
-    }
-
-  </div>;
+  return (
+    <div>
+      <h2 class="heading-4">{props.data.text}</h2>
+      <h6>(waiting for next question...)</h6>
+      {props.data.option_set.map((choice, i) => {
+        return (
+          <div key={i}>
+            <strong class="button-result w-button-result">
+              {`${choice.text} - ${choice.votes} votes`}
+            </strong>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default Results;

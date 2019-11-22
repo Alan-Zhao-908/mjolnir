@@ -3,13 +3,15 @@ import "./App.css";
 import ApiClient from "./APIClient";
 import useSWR, { SWRConfig } from "@zeit/swr";
 import { useCookies } from "react-cookie";
+import Question from "./Question";
 import moment from "moment";
+import Result from "./Result";
 import Timer from "./timer.js";
 
 const uuidv4 = require("uuid/v4");
 let tempTime;
 
-function TimerComponent() {
+function VoteComponent() {
   return (
     <SWRConfig value={{ refreshInterval: 5000 }}>
       <MainApp />
@@ -53,9 +55,17 @@ function MainApp() {
 
   return (
     <div>
-      <Timer time={data.time} seconds={40} />
+      {screen === "question" ? (
+        <div>
+          <div>
+            <Question uid={uid} data={data} showresults={onOptionChosen} />
+          </div>
+        </div>
+      ) : (
+        <Result data={data} />
+      )}
     </div>
   );
 }
 
-export default TimerComponent;
+export default VoteComponent;
