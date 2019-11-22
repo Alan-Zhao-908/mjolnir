@@ -111,10 +111,12 @@ export default class CommentForm extends Component {
               value={this.state.comment.message}
               placeholder="Send a message"
               name="message"
-              rows="5"
+              rows="2"
             />
           </div>
-          <div style={{ padding: "0px 12px" }}>{this.renderError()}</div>
+          <div style={{ padding: "0px 12px", color: "white" }}>
+            {this.renderError()}
+          </div>
           <div class="div-block-13">
             <a href="#">
               <button disabled={this.state.loading} class="button-4 w-button">
