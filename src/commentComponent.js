@@ -8,8 +8,13 @@ class CommentComponent extends Component {
 
     this.state = {
       comments: [
-        { name: "Alan", message: "This is great!", time: "10:00 am" },
-        { name: "Jack", message: "Hilarious...", time: "9:00 am" }
+        { name: "Alan", message: "Wow, he's pretty good", time: "9:01 am" },
+        { name: "Anu", message: "LMFAO", time: "9:00 am" },
+        {
+          name: "Manar",
+          message: "Should get him to juggle next",
+          time: "8:58 am"
+        }
       ],
       loading: false
     };

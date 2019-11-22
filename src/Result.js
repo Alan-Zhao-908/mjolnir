@@ -15,7 +15,7 @@ function Results(props) {
   return (
     <div>
       <h2 class="heading-4">{props.data.text}</h2>
-      <h6>(waiting for next question...)</h6>
+      <h6 style={{ color: "#d8900a" }}>(waiting for next question...)</h6>
       {props.data.option_set.map((choice, i) => {
         return (
           <div key={i}>
